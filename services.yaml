@@ -1,0 +1,104 @@
+# custom_components/solarmax/services.yaml
+
+set_power_limit:
+  name: Power-Limit setzen (PLR)
+  description: Setzt die Leistungsbegrenzung (0–100 %) auf dem SolarMax-Wechselrichter.
+  fields:
+    value:
+      name: Prozent
+      description: Neuer Leistungsgrenzwert in Prozent (0–100). (Nutzerwert)
+      required: true
+      example: 75
+      selector:
+        number:
+          min: 0
+          max: 100
+          step: 1
+          unit_of_measurement: '%'
+          mode: slider
+    entry_id:
+      name: Entry-ID
+      description: Optional – wenn mehrere Inverter vorhanden sind. Alternativ 'din' verwenden.
+      required: false
+      example: "4a8bcd1234567890"
+      selector:
+        text:
+    din:
+      name: Seriennummer (DIN)
+      description: Optional – alternativ zu 'entry_id', z. B. 203046.
+      required: false
+      example: "203046"
+      selector:
+        text:
+
+set_iaa:
+  name: AC Output MAX IAA setzen (IAA)
+  description: Setzt den IAA-Prozentwert (5–100 %). (Nutzerwert)
+  fields:
+    value:
+      name: Prozent
+      required: true
+      example: 100
+      selector:
+        number:
+          min: 5
+          max: 100
+          step: 1
+          unit_of_measurement: '%'
+          mode: slider
+    entry_id:
+      name: Entry-ID
+      required: false
+      selector: { text: }
+    din:
+      name: Seriennummer (DIN)
+      required: false
+      selector: { text: }
+
+set_pam:
+  name: AC Output MAX setzen (PAM)
+  description: Setzt die maximale AC-Ausgangsleistung in Watt (Nutzerwert). Intern wird der doppelte Wert hexadezimal geschrieben.
+  fields:
+    value:
+      name: Watt
+      required: true
+      example: 2750
+      selector:
+        number:
+          min: 1000
+          max: 6000
+          step: 10
+          unit_of_measurement: 'W'
+          mode: slider
+    entry_id:
+      name: Entry-ID
+      required: false
+      selector: { text: }
+    din:
+      name: Seriennummer (DIN)
+      required: false
+      selector: { text: }
+
+set_pin:
+  name: Installed Capacity setzen (PIN)
+  description: Setzt die installierte Leistung in Watt (Nutzerwert). Intern wird der doppelte Wert hexadezimal geschrieben.
+  fields:
+    value:
+      name: Watt
+      required: true
+      example: 2100
+      selector:
+        number:
+          min: 0
+          max: 10000
+          step: 10
+          unit_of_measurement: 'W'
+          mode: slider
+    entry_id:
+      name: Entry-ID
+      required: false
+      selector: { text: }
+    din:
+      name: Seriennummer (DIN)
+      required: false
+      selector: { text: }
